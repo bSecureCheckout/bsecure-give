@@ -54,8 +54,8 @@ function give_bsecure_register_payment_method( $gateways ) {
   
   // Duplicate this section to add support for multiple payment method from a custom payment gateway.
   $gateways['bsecure'] = array(
-    'admin_label'    => __( 'bSecure - Payment Gateway', 'bsecure-givewp' ), // This label will be displayed under Give settings in admin.
-    'checkout_label' => __( 'bSecure Payment Gateway', 'bsecure-givewp' ), // This label will be displayed on donation form in frontend.
+    'admin_label'    => __( 'bSecure - Payment Gateway', 'bsecure-give' ), // This label will be displayed under Give settings in admin.
+    'checkout_label' => __( 'bSecure Payment Gateway', 'bsecure-give' ), // This label will be displayed on donation form in frontend.
   );
   
   return $gateways;
@@ -78,7 +78,7 @@ add_filter( 'give_payment_gateways', 'give_bsecure_register_payment_method' );
 function give_bsecure_register_payment_gateway_sections( $sections ) {
 	
 	// `instamojo-settings` is the name/slug of the payment gateway section.
-	$sections['bsecure-settings'] = __( 'bSecure Payment Gateway', 'bsecure-givewp' );
+	$sections['bsecure-settings'] = __( 'bSecure Payment Gateway', 'bsecure-give' );
 
 	return $sections;
 }
@@ -113,23 +113,23 @@ function give_bsecure_register_payment_gateway_setting_fields( $settings ) {
 
 			// ----- Save Live Credentials Start ------ //
 		    $settings[] = array(
-				'name' => __( 'bSecure Base URL', 'bsecure-givewp' ),
-				'desc' => __( 'Enter bSecure Transactionpost URL, found in your bSecure Dashboard.', 'bsecure-givewp' ),
+				'name' => __( 'bSecure Base URL', 'bsecure-give' ),
+				'desc' => __( 'Enter bSecure Transactionpost URL, found in your bSecure Dashboard.', 'bsecure-give' ),
 				'id'   => 'bsecure_base_url',
 				'type' => 'text',
 				'default'   => $defualtBaseUrl
 		    );
 
             $settings[] = array(
-				'name' => __( 'bSecure Store ID', 'bsecure-givewp' ),
-				'desc' => __( 'Enter bSecure Store ID, found in your bSecure Dashboard.', 'bsecure-givewp' ),
+				'name' => __( 'bSecure Store ID', 'bsecure-give' ),
+				'desc' => __( 'Enter bSecure Store ID, found in your bSecure Dashboard.', 'bsecure-give' ),
 				'id'   => 'bsecure_store_id',
 				'type' => 'text',
 		    );
 
             $settings[] = array(
-				'name' => __( 'bSecure Client ID', 'bsecure-givewp' ),
-				'desc' => __( 'Enter bSecure Client ID, found in your bSecure Dashboard.', 'bsecure-givewp' ),
+				'name' => __( 'bSecure Client ID', 'bsecure-give' ),
+				'desc' => __( 'Enter bSecure Client ID, found in your bSecure Dashboard.', 'bsecure-give' ),
 				'id'   => 'bsecure_client_id',
 				'type' => 'text',
 		    );
@@ -137,33 +137,16 @@ function give_bsecure_register_payment_gateway_setting_fields( $settings ) {
 
 
 		    $settings[] = array(
-				'name' => __( 'bSecure Client Secret', 'bsecure-givewp' ),
-				'desc' => __( 'You can find this client secret from bSecure portal. <br> <a href="'.$bSecurePortalUrl.'" target="_blank">'.$bSecurePortalUrl.'</a>', 'bsecure-givewp' ),
+				'name' => __( 'bSecure Client Secret', 'bsecure-give' ),
+				'desc' => __( 'You can find this client secret from bSecure portal. <br> <a href="'.$bSecurePortalUrl.'" target="_blank">'.$bSecurePortalUrl.'</a>', 'bsecure-give' ),
 				'id'   => 'bsecure_client_secret',
 				'type' => 'password',
 		    );
 
-		    		   
-
-		    // ----- Save Live Credentials End ------ //
-
-
-		    /*$settings[] = array(
-				'name' => __( 'Return Page', 'bsecure-givewp' ),
-				'desc' => __( 'Enter Return page, redirect back from bsecure.', 'bsecure-givewp' ),
-				'id'   => 'bsecure_return_page',
-				'type' => 'text',
-		    );
-
-		    $settings[] = array(
-				'name' => __( 'bSecure Version', 'bsecure-givewp' ),
-				'desc' => __( 'Enter bSecure Version, found in your bSecure Dashboard', 'bsecure-givewp' ),
-				'id'   => 'bsecure_version',
-				'type' => 'text',
-		    );*/ 		    
+		    
 		     $settings[] = array(
 
-                        'name' => __( 'Append country code with Contact Number field.', 'bsecure-givewp' ),
+                        'name' => __( 'Append country code with Contact Number field.', 'bsecure-give' ),
                         'type' => 'checkbox',
                         'desc' => __( '', 'wc-bsecure' ),
                         'id'   => 'give_auto_append_country_code',
@@ -254,7 +237,7 @@ function give_bsecure_process_donation( $purchase_data ) {
 		if(!empty($payment_data['give_donor_contact']) && $auto_append_country_code == 'on'){			
 		
 			if(!$bsecure_give_functions->isPhoneNumberValid($payment_data['give_donor_contact'])){
-				$errorMsg = __( 'Please enter a valid phone number <strong>03XXXXXXXXX</strong> in this format.', 'bsecure-givewp' );
+				$errorMsg = __( 'Please enter a valid phone number <strong>03XXXXXXXXX</strong> in this format.', 'bsecure-give' );
 
 				$give_bsecure->displayGiveError($errorMsg);			
 
@@ -269,7 +252,7 @@ function give_bsecure_process_donation( $purchase_data ) {
 		if ( ! $paymentId ) {
 
 			// Record Gateway Error as Pending Donation in Give is not created.
-			$errorMsg = __( 'Unable to create a pending donation with Give.', 'bsecure-givewp' );
+			$errorMsg = __( 'Unable to create a pending donation with Give.', 'bsecure-give' );
 			$give_bsecure->displayGiveError($errorMsg);	
 		}
 
@@ -318,18 +301,6 @@ function give_bsecure_process_donation( $purchase_data ) {
 
 	} else {
 
-		//$errors
-
-		//give_set_error( 'givewp_error', __('','bsecure-givewp') );
-		/*give_record_gateway_error(
-			__( 'bSecure Error', 'bsecure-givewp' ),
-			sprintf(
-			
-				__( $errorMsg, 'bsecure-givewp' )
-			)
-		);*/
-
-
 		// Send user back to checkout.
 		give_send_back_to_checkout( '?payment-mode=bsecure' );
 	} // End if().
@@ -369,13 +340,13 @@ function giv_bsecure_add_phone_number_field($form_id){
 			<p id="give-give_donor_country_calling_code-wrap" class="form-row form-row-first form-row-responsive">
 		        <label class="give-label" for="give-give_mobile_phone">
 		            <?php
-		            esc_attr_e('Contact Number', 'give'); ?>
+		            esc_attr_e('Contact Number', 'bsecure-give'); ?>
 		            
 		            
 		                <span class="give-required-indicator">*</span>
 		                
 		            <?php
-		            echo Give()->tooltips->render_help(__('We can contact you to this Contact Number.', 'give')); ?>
+		            echo Give()->tooltips->render_help(__('We can contact you to this Contact Number.', 'bsecure-give')); ?>
 		        </label>
 		        <select name="give_country_calling_code">
 		        	<?php
@@ -405,13 +376,13 @@ function giv_bsecure_add_phone_number_field($form_id){
 			     	<label class="give-label" for="give-give_mobile_phone">&nbsp;
 			            <?php
 			            if($auto_append_country_code != 'on'){
-				            esc_attr_e('Contact Number', 'give'); ?>
+				            esc_attr_e('Contact Number', 'bsecure-give'); ?>
 				            
 				            
 				                <span class="give-required-indicator">*</span>
 				                
 				            <?php
-				            echo Give()->tooltips->render_help(__('We can contact you to this Contact Number.', 'give'));
+				            echo Give()->tooltips->render_help(__('We can contact you to this Contact Number.', 'bsecure-give'));
 			            } ?>
 			        </label>
 			    
@@ -420,7 +391,7 @@ function giv_bsecure_add_phone_number_field($form_id){
 		            type="text"
 		            name="give_donor_contact"
 		            autocomplete=""
-		            placeholder="<?php esc_attr_e('Contact Number', 'give'); ?>"
+		            placeholder="<?php esc_attr_e('Contact Number', 'bsecure-give'); ?>"
 		            id="give_donor_contact"
 		            value="<?php echo esc_html($donor_contact); ?>"
 		            <?php  echo ' required aria-required="true" '; ?>
@@ -502,7 +473,7 @@ function saveOrderAtBsecure($request_data){
 					'headers' => $headers,					
 
 				];
-				//echo json_encode($request_data).'<br><br>';
+				
 
 	$response = $give_bsecure->bsecureSendCurlRequest($order_create_endpoint,$params);
 
@@ -553,7 +524,7 @@ add_filter('plugin_action_links_'.plugin_basename(__FILE__), 'give_bsecure_add_p
 function give_bsecure_add_plugin_page_settings_link( $links ) {
 
 	$links = array_merge( array(
-		'<a href="' . esc_url( admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=gateways&section=bsecure-settings' ) ) . '">' . __( 'Settings', 'bsecure-givewp' ) . '</a>'
+		'<a href="' . esc_url( admin_url( 'edit.php?post_type=give_forms&page=give-settings&tab=gateways&section=bsecure-settings' ) ) . '">' . __( 'Settings', 'bsecure-give' ) . '</a>'
 	), $links );
 	
 	return $links;
@@ -568,16 +539,16 @@ function give_bsecure_show_custom_donor_data_admin($payment_id){
 	<div class="column-container donor-info">
 		<div class="column">
 			<p>
-				<strong><?php esc_html_e( 'Donor Contact:', 'give' ); ?></strong><br>
+				<strong><?php esc_html_e( 'Donor Contact:', 'bsecure-give' ); ?></strong><br>
 
 				<?php $donor_contact = give_get_payment_meta( $payment_id, '_give_donor_contact_number', true ); 
-				echo !empty($donor_contact) ? esc_html_e( $donor_contact, 'give' ) : 'None'; ?>
+				echo !empty($donor_contact) ? esc_html($donor_contact) : 'None'; ?>
 			</p>
 			
 		</div>		
 		<div class="column">
 			<p>
-				<strong><?php esc_html_e( 'bSecure Reference:', 'give' ); ?></strong><br>
+				<strong><?php esc_html_e( 'bSecure Reference:', 'bsecure-give' ); ?></strong><br>
 
 				<?php 
 
@@ -585,7 +556,7 @@ function give_bsecure_show_custom_donor_data_admin($payment_id){
 					if(!empty($bsecure_order_ref)) { ?>
 				
 					<a href="<?php echo esc_url($bSecureOrderViewUrl .  $bsecure_order_ref); ?>" target="_blank">
-						<?php	echo __( 'View order at bSecure', 'bsecure-givewp' ); ?>
+						<?php	echo __( 'View order at bSecure', 'bsecure-give' ); ?>
 					</a>
 
 				<?php } ?>
@@ -621,24 +592,26 @@ function give_bsecure_superess_activate() {
     $give_bsecure = new Bsecure_Give;	    
 
     if ( ! $give_bsecure::wc_bsecure_check_ssl() ) {
-       echo '<div class="notice notice-error"><p><strong>Give bSecure</strong> '.__('plugin require ssl enabled to activate it at your domain.', 'bsecure-givewp').' </p></div>'; 	 
+       echo '<div class="notice notice-error"><p><strong>bSecure Give</strong> '.__('plugin require ssl enabled to activate it at your domain.', 'bsecure-give').' </p></div>'; 	 
 
-      // @trigger_error(__('Please enable ssl to continue using this plugin.', 'bsecure-givewp'), E_USER_ERROR);     
+      // @trigger_error(__('Please enable ssl to continue using this plugin.', 'bsecure-give'), E_USER_ERROR);     
     }
 
 
     if ( $give_error ) {
-       echo '<div class="notice notice-error"><p><strong>Give bSecure</strong> '.__('plugin require the minimum Give plugin version of', 'bsecure-givewp').' '.$version_to_check.' </p></div>'; 	 
+       echo '<div class="notice notice-error"><p><strong>Give bSecure</strong> '.__('plugin require the minimum Give plugin version of', 'bsecure-give').' '.esc_html($version_to_check).' </p></div>'; 	 
 
-       @trigger_error(__('Please update Give plugin to continue using this plugin.', 'bsecure-givewp'), E_USER_ERROR);     
+       @trigger_error(__('Please update Give plugin to continue using this plugin.', 'bsecure-give'), E_USER_ERROR);     
     }
 
     
     if ( ! class_exists( 'Give' ) ) {
 
-    	$error_message = __('The Give bSecure plugin requires the <a href="http://wordpress.org/plugins/give/">Give</a> plugin to be active!', 'bsecure-givewp');
-    	echo '<div class="notice notice-error"><p>'.$error_message.' </p></div>'; 
-       @trigger_error(__('Give bSecure plugin required Give plugin to be installed and activate.', 'bsecure-givewp'), E_USER_ERROR); 
+    	echo '<div class="notice notice-error"><p>';
+    	echo __('The bSecure Give plugin requires the <a href="http://wordpress.org/plugins/give/">Give</a> plugin to be active!', 'bsecure-give');
+    	echo ' </p></div>';
+    	
+       @trigger_error(__('bSecure Give plugin required Give plugin to be installed and activate.', 'bsecure-give'), E_USER_ERROR); 
     }
 
     $give_bsecure_activated = get_option('give_bsecure_activated', 0);

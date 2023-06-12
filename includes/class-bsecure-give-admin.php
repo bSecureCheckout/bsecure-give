@@ -55,19 +55,19 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 		<div class="wrapper-deactivation-survey">
 			<form class="bsecure-deactivation-survey-form" method="POST">
 				
-				<p class="generalMainText"><?php esc_html_e( 'If you have a moment, please let us know why you are deactivating Give bSecure. All submissions are anonymous and we only use this feedback to improve this plugin.', 'bsecure-givewp' ); ?></p>
+				<p class="generalMainText"><?php esc_html_e( 'If you have a moment, please let us know why you are deactivating Give bSecure. All submissions are anonymous and we only use this feedback to improve this plugin.', 'bsecure-give' ); ?></p>
 
 				<div class="bSecureoptionsBoxes">
 					<label class="bsecure-field-description">
 						<input type="radio" name="give_bsecure-survey-radios" value="1">
-						<?php esc_html_e( "I no longer need the plugin", 'bsecure-givewp' ); ?>
+						<?php esc_html_e( "I no longer need the plugin", 'bsecure-give' ); ?>
 					</label>
 				</div>		
 
 				<div class="bSecureoptionsBoxes">
 					<label class="bsecure-field-description">
 						<input type="radio" name="give_bsecure-survey-radios" value="2" data-has-field="true">
-						<?php esc_html_e( 'I found a better plugin', 'bsecure-givewp' ); ?>
+						<?php esc_html_e( 'I found a better plugin', 'bsecure-give' ); ?>
 					</label>
 
 					<div class="bsecure-survey-extra-field reason-box2 hidden">
@@ -76,7 +76,7 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 							printf(
 								'%1$s',
 								
-								__( 'Can you provide the name of plugin?', 'bsecure-givewp' )
+								__( 'Can you provide the name of plugin?', 'bsecure-give' )
 							);
 						?>
 						</p>
@@ -88,7 +88,7 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 				<div class="bSecureoptionsBoxes">
 					<label class="bsecure-field-description">
 						<input type="radio" name="give_bsecure-survey-radios" value="3" data-has-field="true">
-						<?php esc_html_e( 'I couldn\'t get the plugin to work', 'bsecure-givewp' ); ?>
+						<?php esc_html_e( 'I couldn\'t get the plugin to work', 'bsecure-give' ); ?>
 						
 						
 					</label>	
@@ -97,9 +97,9 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 						<?php
 							printf(
 								'%1$s %2$s %3$s',
-								__( "We're sorry to hear that, check", 'bsecure-givewp' ),
+								__( "We're sorry to hear that, check", 'bsecure-give' ),
 								'<a href="https://wordpress.org/support/plugin/give-bsecure">Give bSecure Support</a>.',
-								__( 'Can you describe the issue?', 'bsecure-givewp' )
+								__( 'Can you describe the issue?', 'bsecure-give' )
 							);
 						?>
 						</p>
@@ -110,14 +110,14 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 				<div class="bSecureoptionsBoxes">
 					<label class="bsecure-field-description">
 						<input type="radio" name="give_bsecure-survey-radios" value="4">
-						<?php esc_html_e( 'It\'s a temporary deactivation', 'bsecure-givewp' ); ?>
+						<?php esc_html_e( 'It\'s a temporary deactivation', 'bsecure-give' ); ?>
 					</label>
 				</div>
 
 				<div class="bSecureoptionsBoxes">
 					<label class="bsecure-field-description">
 						<input type="radio" name="give_bsecure-survey-radios" value="5" data-has-field="true">
-						<?php esc_html_e( 'The plugin broke my site', 'bsecure-givewp' ); ?>
+						<?php esc_html_e( 'The plugin broke my site', 'bsecure-give' ); ?>
 					</label>
 
 					<div class="bsecure-survey-extra-field reason-box5 hidden">
@@ -125,9 +125,9 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 						<?php
 							printf(
 								'%1$s %2$s %3$s',
-								__( "We're sorry to hear that, check", 'bsecure-givewp' ),
+								__( "We're sorry to hear that, check", 'bsecure-give' ),
 								'<a href="https://wordpress.org/support/plugin/give-bsecure">bSecure Support</a>.',
-								__( 'Can you describe the issue?', 'bsecure-givewp' )
+								__( 'Can you describe the issue?', 'bsecure-give' )
 							);
 						?>
 						</p>
@@ -138,7 +138,7 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 				<div class="bSecureoptionsBoxes">
 					<label class="bsecure-field-description">
 						<input type="radio" name="give_bsecure-survey-radios" value="6" data-has-field="true">
-						<?php esc_html_e( 'The plugin suddenly stopped working', 'bsecure-givewp' ); ?>
+						<?php esc_html_e( 'The plugin suddenly stopped working', 'bsecure-give' ); ?>
 					</label>
 
 					<div class="bsecure-survey-extra-field reason-box6 hidden">
@@ -146,9 +146,9 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 						<?php
 							printf(
 								'%1$s %2$s %3$s',
-								__( "We're sorry to hear that, check", 'bsecure-givewp' ),
+								__( "We're sorry to hear that, check", 'bsecure-give' ),
 								'<a href="https://wordpress.org/support/plugin/give-bsecure">bSecure Support</a>.',
-								__( 'Can you describe the issue?', 'bsecure-givewp' )
+								__( 'Can you describe the issue?', 'bsecure-give' )
 							);
 						?>
 						</p>
@@ -159,11 +159,11 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 				<div class="bSecureoptionsBoxes">
 					<label class="bsecure-field-description">
 						<input type="radio" name="give_bsecure-survey-radios" value="7" data-has-field="true">
-						<?php esc_html_e( 'Other', 'bsecure-givewp' ); ?>
+						<?php esc_html_e( 'Other', 'bsecure-give' ); ?>
 					</label>
 
 					<div class="bsecure-survey-extra-field reason-box7 hidden">
-						<p><?php esc_html_e( "Please describe why you're deactivating Give bSecure", 'bsecure-givewp' ); ?></p>
+						<p><?php esc_html_e( "Please describe why you're deactivating Give bSecure", 'bsecure-give' ); ?></p>
 						<textarea disabled name="user-reason" class="widefat" rows="4"></textarea>
 					</div>
 				</div>
@@ -174,8 +174,8 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 					$current_user_email = $current_user->user_email;
 					$current_user_name = $current_user->display_name;
 				?>
-				<input type="hidden" name="current-user-email" value="<?php echo $current_user_email; ?>">
-				<input type="hidden" name="current-user-name" value="<?php echo $current_user_name; ?>">
+				<input type="hidden" name="current-user-email" value="<?php echo sanitize_email($current_user_email); ?>">
+				<input type="hidden" name="current-user-name" value="<?php echo sanitize_text_field($current_user_name); ?>">
 				<input type="hidden" name="current-site-url" value="<?php echo esc_url( get_bloginfo( 'url' ) ); ?>">
 				
 				<input type="hidden" name="action" value="give_bsecure_deactivation_form_submit">
@@ -227,13 +227,13 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 		$give_options = give_get_settings();
 
 		$reasons = [
-				'1' => __( "I no longer need the plugin", 'bsecure-givewp' ),
-				'2' => __( "I found a better plugin", 'bsecure-givewp' ),
-				'3' => __( "I couldn't get the plugin to work", 'bsecure-givewp' ),
-				'4' => __( "It's a temporary deactivation", 'bsecure-givewp' ),
-				'5' => __( "The plugin broke my site", 'bsecure-givewp' ),
-				'6' => __( "The plugin suddenly stopped working", 'bsecure-givewp' ),
-				'7' => __( "Other", 'bsecure-givewp' ),
+				'1' => __( "I no longer need the plugin", 'bsecure-give' ),
+				'2' => __( "I found a better plugin", 'bsecure-give' ),
+				'3' => __( "I couldn't get the plugin to work", 'bsecure-give' ),
+				'4' => __( "It's a temporary deactivation", 'bsecure-give' ),
+				'5' => __( "The plugin broke my site", 'bsecure-give' ),
+				'6' => __( "The plugin suddenly stopped working", 'bsecure-give' ),
+				'7' => __( "Other", 'bsecure-give' ),
 				];
 
 		
@@ -257,7 +257,7 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 
 		if(empty($reason)){
 
-			wp_send_json_error(	__('Please select one of the option from list! ', 'bsecure-givewp'));
+			wp_send_json_error(	__('Please select one of the option from list! ', 'bsecure-give'));
 		}
 
 		$request_data = [
@@ -277,7 +277,7 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 
 		if( $validateResponse['error'] ){		
 			
-			wp_send_json_error(	__('Response Error: ', 'bsecure-givewp').$validateResponse['msg']);		
+			wp_send_json_error(	__('Response Error: ', 'bsecure-give').$validateResponse['msg']);		
 
 		} else {
 
@@ -303,7 +303,7 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 
 			if($validateResponse['error']){			
 				
-				wp_send_json_error(	__('Response Error: ', 'bsecure-givewp').$validateResponse['msg']);			
+				wp_send_json_error(	__('Response Error: ', 'bsecure-give').$validateResponse['msg']);			
 
 			}else{
 
@@ -315,7 +315,7 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 					);
 				} else {
 
-					wp_send_json_error(	 __("No response from bSecure server",'bsecure-givewp') );
+					wp_send_json_error(	 __("No response from bSecure server",'bsecure-give') );
 
 				}			
 				
@@ -386,7 +386,7 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 
 		if( $validateResponse['error'] ){		
 			
-			//error_log(	__('Response Error: ', 'bsecure-givewp').$validateResponse['msg']);
+			//error_log(	__('Response Error: ', 'bsecure-give').$validateResponse['msg']);
 			return false;		
 
 		} else {
@@ -414,7 +414,7 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 
 			if($validateResponse['error']){			
 				
-				//error_log(	__('Response Error: ', 'bsecure-givewp').$validateResponse['msg']);	
+				//error_log(	__('Response Error: ', 'bsecure-give').$validateResponse['msg']);	
 				return false;		
 
 			}else{
@@ -428,7 +428,7 @@ class Bsecure_Give_Admin extends Bsecure_Give {
 
 				} else {
 
-					//error_log(__("No response from bSecure server",'bsecure-givewp') );
+					//error_log(__("No response from bSecure server",'bsecure-give') );
 					return false;
 
 				}			

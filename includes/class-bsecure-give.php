@@ -53,11 +53,13 @@ class Bsecure_Give {
 
     public function __construct(){      
 
-        //$this->load_dependencies();  
+        $this->base_url = '';
 
-        $give_options = give_get_settings();
+        if(function_exists('give_get_settings')){
+            $give_options = give_get_settings();
 
-        $this->base_url = !empty($give_options['bsecure_base_url']) ? $give_options['bsecure_base_url'] : '';
+            $this->base_url = !empty($give_options['bsecure_base_url']) ? $give_options['bsecure_base_url'] : '';
+        }
 
         if(isset($_GET['order_ref']) && isset($_GET['integration'])){
 
@@ -157,7 +159,7 @@ class Bsecure_Give {
 
                 status_header( 422 );
 
-                $msg = __("An error occurred while sending request: ",'bsecure-givewp') . $response->get_error_message();
+                $msg = __("An error occurred while sending request: ",'bsecure-give') . $response->get_error_message();
 
                 if($isJson){
 
@@ -190,7 +192,7 @@ class Bsecure_Give {
 
             status_header( 422 );
 
-            $msg = __("An error occurred while sending request!",'bsecure-givewp') ; 
+            $msg = __("An error occurred while sending request!",'bsecure-give') ; 
 
             if($isJson){
 
@@ -259,7 +261,7 @@ class Bsecure_Give {
 
         $defaultMessage = [
                             'status' => false, 
-                            'msg' => __('Order data validated successfully.','bsecure-givewp'),
+                            'msg' => __('Order data validated successfully.','bsecure-give'),
                             'is_error' => false
                         ];
 
@@ -273,7 +275,7 @@ class Bsecure_Give {
 
             return  [
                         'status' => true, 
-                        'msg' => __("No cart items returned from bSecure server. Please resubmit your order.", 'bsecure-givewp'),
+                        'msg' => __("No cart items returned from bSecure server. Please resubmit your order.", 'bsecure-give'),
                         'is_error' => true
                     ];
 
@@ -435,7 +437,7 @@ class Bsecure_Give {
 
             if($payment->status == Bsecure_Give::STATUS_CANCELED ){ 
 
-                $this->displayGiveError(__("Sorry! Your order has been ".$payment->status,"givewp-bsecure")); 
+                $this->displayGiveError("Sorry! Your order has been ".$payment->status); 
 
             }  else if ($payment->status != Bsecure_Give::STATUS_FAILED) {
 
@@ -446,7 +448,7 @@ class Bsecure_Give {
 
         }
 
-        $this->displayGiveError(__("Sorry! Your order has been failed.","givewp-bsecure"));
+        $this->displayGiveError("Sorry! Your order has been failed.");
 
         die;
 
@@ -670,7 +672,7 @@ class Bsecure_Give {
 
         // Get Order //
         $order_data = '';
-        $access_token = __('No token needed','bsecure-givewp');           
+        $access_token = __('No token needed','bsecure-give');           
 
         $headers =   $this->getApiHeaders($access_token, false);
 
@@ -724,10 +726,10 @@ class Bsecure_Give {
         give_set_error( 'givewp_error', $msg );
         // Record Gateway Error as Pending Donation in Give is not created.
         give_record_gateway_error(
-            __( 'bSecure Error', 'bsecure-givewp' ),
+            __( 'bSecure Error', 'bsecure-give' ),
             sprintf(
             /* translators: %s Exception error message. */
-                __( $msg, 'bsecure-givewp' )
+                __( $msg, 'bsecure-give' )
             )
         );
         // Send user back to checkout.
