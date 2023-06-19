@@ -10,14 +10,12 @@
  */
 
 require plugin_dir_path( __FILE__ ) . 'includes/class-bsecure-give.php';
-//require plugin_dir_path( __FILE__ ) . 'includes/class-bsecure-give-admin.php';
 
 
 function bsecure_give_run() {		
 
 	$give_bsecure = new Bsecure_Give;
 	$give_bsecure->init();
-	//new Bsecure_Give_Admin;
 
 }
 
